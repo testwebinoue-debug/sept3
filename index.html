@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head prefix="og: http://ogp.me/ns#">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <meta name="format-detection" content="telephone=no">
+
+    <!-- ページタイトル -->
+    <title>株式会社sept.3 – クリエイティブデザイン</title>
+  
+    <!-- メタディスクリプション -->
+    <meta name="description" content="株式会社sept.3はグラフィックデザインやWebデザインからブランディングまで、クリエイティブな広告制作を得意とするデザイン会社です。心に響くクリエイティブでブランドの魅力を最大化します。">
+  
+    <!-- Robots 指示 -->
+    <meta name="robots" content="index, follow">
+  
+    <!-- 正規 URL -->
+    <link rel="canonical" href="https://sept3.co.jp/">
+  
+    <!-- OGP（FacebookなどSNS向け） -->
+    <meta property="og:locale" content="ja_JP">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="株式会社sept.3 – クリエイティブデザイン">
+    <meta property="og:description" content="株式会社sept.3はグラフィックデザインやWebデザインからブランディングまで、クリエイティブな広告制作を得意とするデザイン会社です。心に響くクリエイティブでブランドの魅力を最大化します。">
+    <meta property="og:url" content="https://sept3.co.jp/">
+    <meta property="og:site_name" content="sept.3">
+    <meta property="og:image" content="https://sept3.co.jp/assets/images/ogp_top.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+  
+    <!-- Twitterカード -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@sept3">
+    <meta name="twitter:title" content="株式会社sept.3 – クリエイティブデザイン">
+    <meta name="twitter:description" content="グラフィックデザイン、Webデザイン、ブランディングなど、株式会社sept.3のクリエイティブ力でブランド価値を強化します。">
+    <meta name="twitter:image" content="https://sept3.co.jp/assets/images/index-twitter-card.jpg">
+  
+    <!-- スタイルシート -->
+    <link rel="stylesheet" href="styles/globals.css">
+  
+    <!-- フェビコン -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-touch-icon-76x76.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-touch-icon-120x120.png" />
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-touch-icon-144x144.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-touch-icon-152x152.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-180x180.png" />
+  </head>
+<body>
+  <div class="layout-container">
+    <div class="layout-wrapper">
+      <!-- Header Desktop -->
+      <nav class="header-desktop">
+        <div class="header-desktop-inner">
+          <button onclick="navigateTo('index.html', 'home-text')" class="nav-item">
+            <p class="nav-item-text">HOME</p>
+          </button>
+          <button onclick="navigateTo('index.html', 'about-text')" class="nav-item">
+            <p class="nav-item-text">ABOUT</p>
+          </button>
+          <button onclick="navigateTo('index.html', 'company_info-text')" class="nav-item">
+            <p class="nav-item-text">COMPANY INFO</p>
+          </button>
+          <button onclick="navigateTo('works.html', 'philosophy-text')" class="nav-item">
+            <p class="nav-item-text">PHILOSOPHY</p>
+          </button>
+          <button onclick="navigateTo('works.html', 'works-text')" class="nav-item">
+            <p class="nav-item-text">WORKS</p>
+          </button>
+          <button onclick="navigateTo('contact.html', 'contact-text')" class="nav-item">
+            <p class="nav-item-text">CONTACT</p>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Header Mobile/Tablet -->
+      <div class="header-mobile" id="headerMobile">
+        <div class="header-mobile-inner">
+          <div class="header-mobile-content">
+            <button onclick="toggleMobileMenu()" class="header-mobile-button">
+              <div class="hamburger-icon" id="hamburgerIcon">
+                <div class="hamburger-svg-wrapper">
+                  <svg class="hamburger-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 60 21">
+                    <g id="Group 7">
+                      <path d="M0 0.5H60" id="Vector 1" stroke="var(--stroke-0, black)" />
+                      <path d="M10 10.5H60" id="Vector 2" stroke="var(--stroke-0, black)" />
+                      <path d="M20 20.5H60" id="Vector 3" stroke="var(--stroke-0, black)" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="close-icon" id="closeIcon" style="display: none;">
+                <div class="close-svg-wrapper">
+                  <svg class="close-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 51 26">
+                    <g id="Group 9">
+                      <path d="M0.396484 0.544922L50.6035 25.4551" id="Vector 4" stroke="var(--stroke-0, black)" />
+                      <path d="M0.396484 25.4551L50.6035 0.544922" id="Vector 5" stroke="var(--stroke-0, black)" />
+                    </g>
+                  </svg>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu -->
+      <div class="mobile-menu" id="mobileMenu" style="display: none;">
+        <div class="mobile-menu-header">
+          <div class="mobile-menu-header-inner">
+            <div class="mobile-menu-header-content">
+              <button onclick="toggleMobileMenu()" class="mobile-menu-close-button">
+                <div class="close-icon">
+                  <div class="close-svg-wrapper">
+                    <svg class="close-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 51 26">
+                      <g id="Group 9">
+                        <path d="M0.396484 0.544922L50.6035 25.4551" id="Vector 4" stroke="var(--stroke-0, black)" />
+                        <path d="M0.396484 25.4551L50.6035 0.544922" id="Vector 5" stroke="var(--stroke-0, black)" />
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mobile-menu-nav">
+          <button onclick="navigateToAndClose('index.html', 'home-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">HOME</p>
+          </button>
+          <button onclick="navigateToAndClose('index.html', 'about-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">ABOUT</p>
+          </button>
+          <button onclick="navigateToAndClose('index.html', 'company_info-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">COMPANY INFO</p>
+          </button>
+          <button onclick="navigateToAndClose('works.html', 'philosophy-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">PHILOSOPHY</p>
+          </button>
+          <button onclick="navigateToAndClose('works.html', 'works-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">WORKS</p>
+          </button>
+          <button onclick="navigateToAndClose('contact.html', 'contact-text')" class="mobile-menu-nav-item">
+            <p class="nav-item-text">CONTACT</p>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Content -->
+      <div class="main-content">
+        <div class="main-inner">
+          <!-- Hero Section -->
+          <div id="home-text" class="hero-section">
+            <!-- Desktop/Tablet -->
+            <div class="hero-desktop">
+              <div class="hero-bg-image">
+                <img alt="sept.3イメージ・タイポグラフィ" class="hero-bg-img" src="images/sept3-typography.png">
+              </div>
+              <div class="hero-logo-container">
+                <h1 class="visually-hidden">
+                  株式会社sept.3 - クリエイティブデザイン
+                </h1>
+                <div class="hero-logo">
+                  <img alt="sept.3ロゴ" class="hero-bg-img" src="images/sept3-corporate-logo.png">
+                </div>
+              </div>
+              <div class="hero-text-container">
+                <div class="hero-text">
+                   <h2 class="mb-0">株式会社 sept.3 は、広告制作会社です。</h2>
+                   <p class="mb-0">グラフィックデザインを中心に、</p>
+                   <p>さまざまな広告制作を行っています。</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Mobile Only -->
+            <div class="hero-mobile">
+              <div class="hero-bg-image">
+                <img alt="sept.3イメージ・タイポグラフィ" class="hero-bg-img" src="images/sept3-typography.png">
+              </div>
+              <div class="hero-logo-container">
+                <h1 class="visually-hidden">
+                  株式会社sept.3 - クリエイティブデザイン
+                </h1>
+                <div class="hero-logo">
+                  <img alt="sept.3ロゴ" class="hero-bg-img" src="images/sept3-corporate-logo.png">
+                </div>
+              </div>
+              <div class="hero-text-container">
+                <div class="hero-text">
+                  <h2 class="mb-0">株式会社 sept.3 は、広告制作会社です。</h2>
+                  <p class="mb-0">グラフィックデザインを中心に、</p>
+                  <p>さまざまな広告制作を行っています。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- About Section -->
+          <div id="about-text" class="about-section">
+            <div class="about-inner">
+              <div>
+                <p class="about-title">
+                  ABOUT
+                </p>
+              </div>
+              <div class="about-content">
+                <!-- Desktop/Tablet -->
+                <div class="about-text-desktop">
+                  <p class="mb-0">株式会社 sept.3 は、</p>
+                  <p class="mb-0">商業広告制作への意志と技術を持ったデザイナーが集まり、</p>
+                  <p class="mb-0">アルティザンを目指して、2003年に設立されたデザインプロダクションです。</p>
+                  <p class="mb-0">ポスター、パンフレット、紙媒体を中心に、新聞、WEB、サイネージなど、</p>
+                  <p>幅広い広告制作を行っています。</p>
+                </div>
+
+                <!-- Mobile -->
+                <div class="about-text-mobile">
+                  <p class="mb-0">株式会社 sept.3 は、</p>
+                  <p class="mb-0">商業広告制作への意志と技術を持った</p>
+                  <p class="mb-0">デザイナーが集まり、</p>
+                  <p class="mb-0">アルティザンを目指して、2003年に設立された</p>
+                  <p class="mb-0">デザインプロダクションです。</p>
+                  <p class="mb-0">ポスター、パンフレット、紙媒体を</p>
+                  <p class="mb-0">中心に、新聞、WEB、サイネージなど、</p>
+                  <p>幅広い広告制作を行っています。</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Company Section -->
+          <div id="company_info-text" class="company-section">
+            <p class="company-title">
+              COMPANY INFO
+            </p>
+            
+            <div class="company-content-single">
+              <!-- Desktop/Tablet -->
+              <div class="company-list-desktop">
+                <div class="company-item">
+                  <span class="company-item-label">会社名</span>
+                  <span class="company-item-value">株式会社セプト・スリー</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">所在地</span>
+                  <span class="company-item-value">大阪市北区芝田1-12-7 大栄ビル新館N1003</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">設立</span>
+                  <span class="company-item-value">2003年7月<br>2006年9月 法人化</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">代表</span>
+                  <span class="company-item-value">代表取締役　鳥飼  久志</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">事業内容</span>
+                  <span class="company-item-value">商業広告企画・制作<br>交通媒体ポスター、パンフレット、販促物のデザイン<br>新聞、WEB、サイネージなどの広告企画・制作</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">取引銀行</span>
+                  <span class="company-item-value">大阪シティ信用金庫</span>
+                </div>
+              </div>
+          
+              <!-- Mobile -->
+              <div class="company-list-mobile">
+                <div class="company-item">
+                  <span class="company-item-label">会社名</span>
+                  <span class="company-item-value">株式会社セプト・スリー</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">所在地</span>
+                  <span class="company-item-value">大阪市北区芝田1-12-7<br>大栄ビル新館N1003</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">設立</span>
+                  <span class="company-item-value">2003年7月<br>2006年9月 法人化</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">代表</span>
+                  <span class="company-item-value">代表取締役　鳥飼  久志</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">事業内容</span>
+                  <span class="company-item-value">商業広告企画・制作<br>交通媒体ポスター、<br>パンフレット、<br>販促物のデザイン<br>新聞、WEB、サイネージなどの広告企画・制作</span>
+                </div>
+                <div class="company-item">
+                  <span class="company-item-label">取引銀行</span>
+                  <span class="company-item-value">大阪シティ信用金庫</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div id="footer_frame" class="footer-container">
+        <div class="footer-inner">
+          <div class="footer-content">
+            <!-- Footer Navigation -->
+            <div class="footer-nav">
+              <button onclick="navigateTo('index.html', 'home-text')" class="nav-item">
+                <p class="nav-item-text mobile">HOME</p>
+              </button>
+              <button onclick="navigateTo('index.html', 'about-text')" class="nav-item">
+                <p class="nav-item-text mobile">ABOUT</p>
+              </button>
+              <button onclick="navigateTo('index.html', 'company_info-text')" class="nav-item">
+                <p class="nav-item-text mobile">COMPANY INFO</p>
+              </button>
+              <button onclick="navigateTo('works.html', 'philosophy-text')" class="nav-item">
+                <p class="nav-item-text mobile">PHILOSOPHY</p>
+              </button>
+              <button onclick="navigateTo('works.html', 'works-text')" class="nav-item">
+                <p class="nav-item-text mobile">WORKS</p>
+              </button>
+              <button onclick="navigateTo('contact.html', 'contact-text')" class="nav-item">
+                <p class="nav-item-text mobile">CONTACT</p>
+              </button>
+            </div>
+
+            <!-- Footer Text -->
+            <div class="footer-text-container">
+              <!-- Desktop/Tablet -->
+              <div class="footer-text footer-text-desktop">
+                <p class="mb-0">〒530-0012  大阪市北区芝田1-12-7 大栄ビル新館N1003 </p>
+                <p class="mb-0">TEL.06-6376-0903  FAX.06-6376-0913</p>
+                <p>Copyright sept.3 Inc. All Rights Reserved.</p>
+              </div>
+
+              <!-- Mobile -->
+              <div class="footer-text footer-text-mobile">
+                <p class="mb-0">〒530-0012  大阪市北区芝田1-12-7</p>
+                <p class="mb-0">大栄ビル新館N1003 </p>
+                <p class="mb-0">TEL.06-6376-0903  FAX.06-6376-0913</p>
+                <p>Copyright sept.3 Inc. All Rights Reserved.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

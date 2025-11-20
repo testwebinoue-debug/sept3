@@ -1,0 +1,24 @@
+# HTTPS redirect settings
+RewriteEngine on
+RewriteCond %{HTTPS} off
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# お名前.com SDプラン用 .htaccess（最小限版）
+# このファイルの使用はオプションです
+# config.phpの保護のみに使用することを推奨
+
+# config.phpへのアクセス禁止
+<Files "config.php">
+    Require all denied
+</Files>
+
+# ログディレクトリへのアクセス禁止
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteRule ^logs/ - [F,L]
+    RewriteRule ^tmp/ - [F,L]
+</IfModule>
+
+# 注意：お名前.com SDプランでは.htaccessを設置すると
+# コントロールパネルの一部機能が無効になる可能性があります
+# 問題が発生した場合はこのファイルを削除してください
