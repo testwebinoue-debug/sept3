@@ -142,7 +142,7 @@ define('SECURITY_HEADERS', [
 ]);
 
 // ========================================
-// セッション設定適用（CSRFトークン対応・SDプラン安全版）
+// セッション設定適用（本番環境対応版）
 // ========================================
 
 // セッション保存ディレクトリ
@@ -150,34 +150,36 @@ $sessionDir = __DIR__ . '/tmp/sessions';
 
 // ディレクトリが存在しない場合は作成
 if (!is_dir($sessionDir)) {
-    if (!mkdir($sessionDir, 0755, true)) {
+    if (!@mkdir($sessionDir, 0755, true)) {
         // 作成に失敗した場合は /tmp にフォールバック
         $sessionDir = sys_get_temp_dir() . '/my_app_sessions';
         if (!is_dir($sessionDir)) {
-            mkdir($sessionDir, 0755, true);
+            @mkdir($sessionDir, 0755, true);
         }
     }
 }
 
 // ディレクトリが書き込み可能か確認
 if (!is_writable($sessionDir)) {
-    // 書き込み不可の場合は一時的に権限を変更
-    chmod($sessionDir, 0777);
+    @chmod($sessionDir, 0755); // 0777から0755に変更（セキュリティ向上）
 }
 
 // セッション保存先を設定
-session_save_path($sessionDir);
+@session_save_path($sessionDir);
 
-// セッション開始（多重起動防止）
-if (session_status() === PHP_SESSION_NONE) {
-    // エラー表示を一時的に有効化（デバッグ用）
+// ★重要: デバッグモードによってエラー表示を制御
+if (defined('DEBUG_MODE') && DEBUG_MODE === true) {
+    // 開発環境: エラーを表示
     ini_set('display_errors', 1);
     error_reporting(E_ALL);
-
-    session_start();
-
-    // エラー表示を本番向けに戻す場合は以下
-    // ini_set('display_errors', 0);
+} else {
+    // 本番環境: エラーを非表示
+    ini_set('display_errors', 0);
+    error_reporting(0);
 }
+
+// ★重要: config.phpではセッションを開始しない
+// セッションは各エンドポイント（get-csrf-token.php, contact-handler.php）で
+// 必要に応じて開始する
 
 ?>

@@ -242,25 +242,7 @@ try {
     
     // お問い合わせ種類の日本語変換
     $inquiryTypeText = $inquiryType === 'consultation' ? '新規お取引のご相談' : 'その他';
-    
-    // メール本文の作成（管理者宛）
-    $mailBody = "【お問い合わせ内容】\n\n";
-    $mailBody .= "お問い合わせの種類: " . $inquiryTypeText . "\n";
-    if (!empty($company)) {
-        $mailBody .= "会社名: " . $company . "\n";
-    }
-    $mailBody .= "お名前: " . $lastName . " " . $firstName . "\n";
-    $mailBody .= "フリガナ: " . $lastNameKana . " " . $firstNameKana . "\n";
-    $mailBody .= "電話番号: " . $phone . "\n";
-    $mailBody .= "メールアドレス: " . $email . "\n";
-    $mailBody .= "\n【お問い合わせ内容】\n";
-    $mailBody .= $content . "\n\n";
-    $mailBody .= "---\n";
-    $mailBody .= "送信日時: " . date('Y年m月d日 H:i:s') . "\n";
-    $mailBody .= "送信元IP: " . getRealIP() . "\n";
-    if (defined('LOG_USER_AGENT') && LOG_USER_AGENT) {
-        $mailBody .= "User-Agent: " . (isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown') . "\n";
-    }
+
     
 // ========================================
 // メール送信処理（完全版）
@@ -412,7 +394,7 @@ if (!$autoReplySuccess) {
     echo json_encode([
         'success' => true,
         'message' => 'お問い合わせを受け付けました。ご入力いただいたメールアドレスに確認メールをお送りしました。'
-]);
+    ]);
     
 } catch (Exception $e) {
     // エラーログ記録

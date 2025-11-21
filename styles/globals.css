@@ -158,6 +158,7 @@ body {
   color: #000000;
   margin: 0;
   padding: 0;
+  overflow-x: hidden;
 }
 
 p {
@@ -925,7 +926,7 @@ p.mb-0 {
   flex-direction: column;
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   justify-content: center;
-  line-height: 0;
+  line-height: 1;
   font-style: normal;
   position: relative;
   flex-shrink: 0;

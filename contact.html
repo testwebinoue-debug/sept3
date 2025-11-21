@@ -38,6 +38,11 @@
   
     <!-- スタイルシート -->
     <link rel="stylesheet" href="styles/globals.css">
+
+    <!-- WEBフォント -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Zen+Kaku+Gothic+Antique:wght@400;500&family=Zen+Old+Mincho:wght@500&display=swap" rel="stylesheet">    
   
     <!-- フェビコン・Apple タッチアイコン -->
     <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
@@ -168,6 +173,20 @@
                 <!-- Form Content -->
                 <div class="contact-fields-wrapper">
                   <div class="contact-fields-inner">
+
+                    <!-- ハニーポット（ボット対策・非表示フィールド） -->
+                    <div class="honeypot-field" style="position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none;">
+                      <label for="website">ウェブサイト（入力しないでください）</label>
+                      <input 
+                      type="text" 
+                      id="website"
+                      name="website" 
+                      tabindex="-1" 
+                      autocomplete="off"
+                      aria-hidden="true"
+                      >
+                    </div>
+
                     <!-- Form Header -->
                     <div class="form-field">
                       <p class="form-label" style="font-size: 16px;">お問い合わせ内容を入力</p>
@@ -178,7 +197,7 @@
                     <div class="form-field radio-group">
                       <p class="form-label">お問い合わせの内容※</p>
                       <div class="inquiry-types">
-                        <button type="button" onclick="selectInquiryType('consultation')" class="radio-button" id="radioConsultation">
+                        <button type="button" class="radio-button" id="radioConsultation">
                           <div class="radio-icon">
                             <svg class="radio-svg" fill="none" preserveAspectRatio="none" viewBox="0 0 18 18">
                               <circle cx="9" cy="9" fill="#3f3d3d" r="9" />
