@@ -286,7 +286,7 @@ p.mb-0 {
 }
 
 .nav-item-text.mobile {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .hamburger-icon {
@@ -449,7 +449,7 @@ p.mb-0 {
   padding: 0;
   position: relative;
   flex-shrink: 0;
-  gap: 10px;
+  column-gap: 25px;  /* ← この行を追加：横方向のみ20px */
 }
 
 .footer-text-container {
@@ -469,7 +469,7 @@ p.mb-0 {
   font-style: normal;
   position: relative;
   flex-shrink: 0;
-  font-size: 16px;
+  font-size: 13px;
   color: black;
   text-align: center;
   white-space: pre;
@@ -1011,7 +1011,7 @@ p.mb-0 {
 .works-inner {
   display: flex;
   flex-direction: column;
-  gap: 75px;
+  gap: 50px;
   align-items: center;
   width: 100%;
 }
@@ -1975,6 +1975,23 @@ p.mb-0 {
   .works-list-tablet {
     display: none;
   }
+}
+
+/* モバイル時のPHILOSOPHYセクションの間隔調整 */
+@media (max-width: 767px) {
+  .philosophy-bg {
+    top: 110px;  /* 現在60pxを80pxに変更（+20px） */
+  }
+  
+  .philosophy-section {
+    height: 385px;  /* 現在360pxを380pxに変更（高さも調整） */
+  }
+}
+
+/* フッターのCopyright行のみフォントサイズ変更 */
+.footer-text-mobile p:last-child,
+.footer-text-desktop p:last-child {
+  font-size: 11px;
 }
 
 /* iPhone横向き対応 - 最優先・画面サイズ問わず適用 */
