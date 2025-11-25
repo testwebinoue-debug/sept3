@@ -1,40 +1,139 @@
-# HTTPS redirect settings
-RewriteEngine on
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# ========================================
+# お名前.com SDプラン用 .htaccess
+# Apache 2.4+ 構文で統一
+# ========================================
 
-# お名前.com SDプラン用 .htaccess（最小限版）
-# このファイルの使用はオプションです
-# config.phpの保護のみに使用することを推奨
+# ========================================
+# HTTPS リダイレクト（SSL証明書設定後に有効化）
+# ========================================
+# 注意: SSL証明書を設定するまでコメントアウトしておいてください
+ <IfModule mod_rewrite.c>
+     RewriteEngine On
+     RewriteCond %{HTTPS} off
+     RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+ </IfModule>
 
-# config.phpへのアクセス禁止
+# ========================================
+# セキュリティ設定
+# ========================================
+
+# PHP エラー表示を強制的にオフ（本番環境）
+<IfModule mod_php7.c>
+    php_flag display_errors Off
+    php_flag display_startup_errors Off
+    php_value error_reporting 0
+</IfModule>
+
+# config.php への直接アクセスを禁止
 <Files "config.php">
     Require all denied
 </Files>
 
-# ログディレクトリへのアクセス禁止
-<IfModule mod_rewrite.c>
-    RewriteEngine On
-    RewriteRule ^logs/ - [F,L]
-    RewriteRule ^tmp/ - [F,L]
-</IfModule>
-
-# 注意：お名前.com SDプランでは.htaccessを設置すると
-# コントロールパネルの一部機能が無効になる可能性があります
-# 問題が発生した場合はこのファイルを削除してください
-
-# エラー表示を強制的にオフ
-php_flag display_errors off
-php_flag display_startup_errors off
-
-# config.phpへの直接アクセスを禁止
-<Files "config.php">
-    Order Allow,Deny
-    Deny from all
+# セキュリティ関数ファイルへの直接アクセスを禁止
+<Files "security-functions.php">
+    Require all denied
 </Files>
 
-# includes/ディレクトリへのアクセス禁止
-<Directory "includes">
-    Order Allow,Deny
-    Deny from all
-</Directory>
+# includes ディレクトリ全体へのアクセス禁止
+<IfModule mod_authz_core.c>
+    <DirectoryMatch "^.*/includes/">
+        Require all denied
+    </DirectoryMatch>
+</IfModule>
+
+# logs ディレクトリへのアクセス禁止
+<IfModule mod_authz_core.c>
+    <DirectoryMatch "^.*/logs/">
+        Require all denied
+    </DirectoryMatch>
+</IfModule>
+
+# tmp ディレクトリへのアクセス禁止
+<IfModule mod_authz_core.c>
+    <DirectoryMatch "^.*/tmp/">
+        Require all denied
+    </DirectoryMatch>
+</IfModule>
+
+# ログファイルへの直接アクセスを禁止
+<FilesMatch "\.(log|txt)$">
+    Require all denied
+</FilesMatch>
+
+# バックアップファイル、設定ファイルへのアクセス禁止
+<FilesMatch "(\.bak|\.backup|\.old|\.orig|\.save|\.swp|~)$">
+    Require all denied
+</FilesMatch>
+
+# .htaccess と .htpasswd へのアクセス禁止
+<FilesMatch "^\.ht">
+    Require all denied
+</FilesMatch>
+
+# ========================================
+# セキュリティヘッダー
+# ========================================
+
+<IfModule mod_headers.c>
+    # XSS対策
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # MIMEタイプスニッフィング対策
+    Header set X-Content-Type-Options "nosniff"
+    
+    # クリックジャッキング対策
+    Header set X-Frame-Options "DENY"
+    
+    # リファラーポリシー
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+    
+    # 権限ポリシー
+    Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ========================================
+# パフォーマンス最適化（オプション）
+# ========================================
+
+# ブラウザキャッシュの設定
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # 画像ファイル
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS・JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # フォント
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/ttf "access plus 1 year"
+    
+    # HTML（キャッシュしない）
+    ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# ========================================
+# 文字コード設定
+# ========================================
+AddDefaultCharset UTF-8
+
+# ========================================
+# インデックス表示の無効化
+# ========================================
+Options -Indexes
+
+# ========================================
+# カスタムエラーページ（オプション）
+# ========================================
+# ErrorDocument 404 /404.html
+# ErrorDocument 403 /403.html
+# ErrorDocument 500 /500.html
+```

@@ -240,10 +240,6 @@ try {
     $firstName = sanitizeSQL($firstName);
     $content = sanitizeSQL($content);
     
-    // お問い合わせ種類の日本語変換
-    $inquiryTypeText = $inquiryType === 'consultation' ? '新規お取引のご相談' : 'その他';
-
-    
 // ========================================
 // メール送信処理（完全版）
 // ========================================
@@ -251,9 +247,6 @@ try {
 // メール送信設定の初期化
 mb_language("Japanese");
 mb_internal_encoding("UTF-8");
-
-// お問い合わせ種類の日本語変換
-$inquiryTypeText = $inquiryType === 'consultation' ? '新規お取引のご相談' : 'その他';
 
 // メール本文の作成（管理者宛）
 $mailBody = "【お問い合わせ内容】\n\n";
