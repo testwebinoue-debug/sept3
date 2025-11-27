@@ -444,12 +444,13 @@ p.mb-0 {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;  /* ← center から space-between に変更 */
   overflow: clip;
   padding: 0;
   position: relative;
   flex-shrink: 0;
   column-gap: 25px;  /* ← この行を追加：横方向のみ20px */
+  max-width: 300px;  /* ← この行を追加 */
 }
 
 .footer-text-container {
@@ -464,7 +465,7 @@ p.mb-0 {
 
 .footer-text {
   font-family: 'Inter', 'Noto Sans JP', sans-serif;
-  font-weight: 400;
+  font-weight: 500;
   line-height: 1;  /* 元の設定を維持 */
   font-style: normal;
   position: relative;
@@ -584,6 +585,7 @@ p.mb-0 {
 .hero-text {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -593,7 +595,7 @@ p.mb-0 {
 }
 
 .hero-text h2 {
-  font-weight: normal !important;
+  font-weight: 500 !important;
   font-size: 16px !important;
   line-height: 35px !important;
 }
@@ -635,6 +637,7 @@ p.mb-0 {
 .about-title {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -653,6 +656,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 40px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 16px;
@@ -665,6 +669,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 35px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 14px;
@@ -688,6 +693,7 @@ p.mb-0 {
 .company-title {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -725,9 +731,10 @@ p.mb-0 {
 .company-item-label {
   font-family: 'Zen Kaku Gothic Antique', 'Noto Sans', sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
   color: black;
   line-height: 35px;
-  font-variation-settings: 'CTGR' 0, 'wdth' 100, 'wght' 400;
   flex-shrink: 0;
   margin-right: 20px;
   width: 80px;
@@ -736,6 +743,8 @@ p.mb-0 {
 .company-item-value {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
   color: black;
   line-height: 35px;
   flex: 1;
@@ -795,6 +804,7 @@ p.mb-0 {
 .contact-title {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -840,6 +850,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 28px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: #3f3d3d;
@@ -928,6 +939,7 @@ p.mb-0 {
   justify-content: center;
   line-height: 1.5;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: #3f3d3d;
@@ -936,7 +948,7 @@ p.mb-0 {
 }
 
 .radio-label p {
-  line-height: 28px;
+  line-height: 1px;
   white-space: pre;
 }
 
@@ -1085,6 +1097,7 @@ p.mb-0 {
 .philosophy-title {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -1121,6 +1134,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 40px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 16px;
@@ -1133,6 +1147,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 35px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 14px;
@@ -1356,6 +1371,7 @@ p.mb-0 {
 .works-title {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   color: black;
@@ -1379,6 +1395,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 40px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 16px;
@@ -1391,6 +1408,7 @@ p.mb-0 {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   line-height: 35px;
   font-style: normal;
+  font-weight: 500;
   position: relative;
   flex-shrink: 0;
   font-size: 14px;
@@ -1429,9 +1447,10 @@ p.mb-0 {
 .works-item-label {
   font-family: 'Zen Kaku Gothic Antique', 'Noto Sans', sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
   color: black;
   line-height: 35px;
-  font-variation-settings: 'CTGR' 0, 'wdth' 100, 'wght' 400;
   flex-shrink: 0;
   margin-right: 20px;
   width: 100px;
@@ -1441,6 +1460,8 @@ p.mb-0 {
 .works-item-value {
   font-family: 'Zen Kaku Gothic Antique', sans-serif;
   font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
   color: black;
   line-height: 35px;
   flex: 1;
@@ -1481,7 +1502,8 @@ p.mb-0 {
   
   .footer-nav {
     padding: 10px 0;
-    gap: 50px;
+    gap: 40px;
+    max-width: 700px;  /* ← この行を追加 */
   }
   
   .footer-text-desktop {
@@ -1847,6 +1869,7 @@ p.mb-0 {
   
   .footer-nav {
     gap: 75px;
+    max-width: 1800px;  /* ← この行を追加 */
   }
   
   .main-content {
@@ -1984,7 +2007,7 @@ p.mb-0 {
   }
   
   .philosophy-section {
-    height: 385px;  /* 現在360pxを380pxに変更（高さも調整） */
+    height: 385px;  /* 現在360pxを385pxに変更（高さも調整） */
   }
 }
 

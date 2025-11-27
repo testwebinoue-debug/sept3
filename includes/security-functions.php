@@ -284,10 +284,23 @@ function sanitizeInput($input) {
 }
 
 /**
- * SQL用サニタイズ
+ * 電話番号のサニタイズ
+ */
+function sanitizePhone($phone) {
+    // 数字とハイフンのみ許可
+    return preg_replace('/[^0-9\-]/', '', $phone);
+}
+
+/**
+ * SQL用サニタイズ（将来のDB対応用 - 現在は未使用）
+ * 
+ * 注意: この関数は将来のDB対応時のみ使用してください。
+ * 現時点では使用すると、アポストロフィ等の正当な文字が削除されます。
+ * 例: "O'Brien" → "OBrien"
+ * 
+ * DB使用時はプリペアドステートメントを推奨します。
  */
 function sanitizeSQL($input) {
-    // 将来のDB対応用
     return str_replace(["'", '"', ';', '--'], '', $input);
 }
 
@@ -295,7 +308,17 @@ function sanitizeSQL($input) {
  * メールアドレスの検証
  */
 function validateEmail($email) {
-    $email = strtolower(trim($email));
+    // 前後の空白を削除してから小文字化
+    $email = trim($email);
+    $email = mb_strtolower($email, 'UTF-8');
+    
+    // すべての空白文字を削除
+    $email = preg_replace('/\s+/', '', $email);
+    
+    // 改行文字のチェック（ヘッダーインジェクション対策）
+    if (preg_match('/[\r\n]/', $email)) {
+        return false;
+    }
     
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         return false;
@@ -368,7 +391,7 @@ function containsProhibitedWords($text) {
 function logSecurity($message) {
     $logDir = defined('LOG_SAVE_PATH') ? LOG_SAVE_PATH : __DIR__ . '/../logs';
     if (!is_dir($logDir)) {
-        @mkdir($logDir, 0755, true);
+        @mkdir($logDir, 0700, true);  // 所有者のみアクセス可能
     }
     
     $logFile = $logDir . '/security_' . date('Y-m') . '.log';
@@ -386,7 +409,7 @@ function logAudit($action, $details = []) {
     
     $logDir = defined('LOG_SAVE_PATH') ? LOG_SAVE_PATH : __DIR__ . '/../logs';
     if (!is_dir($logDir)) {
-        @mkdir($logDir, 0755, true);
+        @mkdir($logDir, 0700, true);  // 所有者のみアクセス可能
     }
     
     $logFile = $logDir . '/audit_' . date('Y-m') . '.log';
@@ -404,6 +427,23 @@ function logAudit($action, $details = []) {
     
     $logData = json_encode($logEntry, JSON_UNESCAPED_UNICODE) . "\n";
     @file_put_contents($logFile, $logData, FILE_APPEND | LOCK_EX);
+}
+
+/**
+ * ログクリーンアップ（古いログファイルの削除）
+ */
+function cleanOldLogs() {
+    $logDir = defined('LOG_SAVE_PATH') ? LOG_SAVE_PATH : __DIR__ . '/../logs';
+    if (!is_dir($logDir)) return;
+    
+    $retentionDays = defined('LOG_RETENTION_DAYS') ? LOG_RETENTION_DAYS : 90;
+    $cutoffTime = time() - ($retentionDays * 86400);
+    
+    foreach (glob($logDir . '/*.log') as $logFile) {
+        if (filemtime($logFile) < $cutoffTime) {
+            @unlink($logFile);
+        }
+    }
 }
 
 /**
@@ -427,3 +467,4 @@ function sendErrorNotification($subject, $message) {
     
     @mb_send_mail($adminEmail, $subject, $body, $headers);
 }
+?>

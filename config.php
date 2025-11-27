@@ -51,7 +51,7 @@ define('MIN_FORM_FILL_TIME', 3); // 最小入力時間（秒）
 define('MAX_FORM_FILL_TIME', 3600); // 最大入力時間（秒）
 
 // 入力検証設定
-define('ENABLE_MX_VALIDATION', true); // MXレコード検証を有効化
+define('ENABLE_MX_VALIDATION', false); // MXレコード検証を有効化（本番環境では無効を推奨）
 define('MAX_EMAIL_LENGTH', 254); // メールアドレスの最大長
 define('MAX_PHONE_LENGTH', 15); // 電話番号の最大長
 define('MAX_NAME_LENGTH', 50); // 氏名の最大長
@@ -97,6 +97,10 @@ define('LOG_IP_ADDRESS', true); // IPアドレスを記録
 define('LOG_USER_AGENT', true); // User-Agentを記録
 define('LOG_REFERER', true); // Refererを記録
 define('LOG_FORM_DATA', false); // フォームデータを記録（個人情報保護のため通常はfalse）
+
+// ログローテーション設定
+define('LOG_MAX_SIZE', 10485760); // 10MB
+define('LOG_RETENTION_DAYS', 90); // 90日保存
 
 // ========================================
 // システム設定
@@ -150,18 +154,36 @@ $sessionDir = __DIR__ . '/tmp/sessions';
 
 // ディレクトリが存在しない場合は作成
 if (!is_dir($sessionDir)) {
-    if (!@mkdir($sessionDir, 0755, true)) {
+    if (!@mkdir($sessionDir, 0700, true)) {
         // 作成に失敗した場合は /tmp にフォールバック
-        $sessionDir = sys_get_temp_dir() . '/my_app_sessions';
-        if (!is_dir($sessionDir)) {
-            @mkdir($sessionDir, 0755, true);
+        $fallbackDir = sys_get_temp_dir() . '/my_app_sessions';
+        if (!is_dir($fallbackDir)) {
+            @mkdir($fallbackDir, 0700, true);
+        }
+        // フォールバック先が作成できた場合のみ切り替え
+        if (is_dir($fallbackDir)) {
+            $sessionDir = $fallbackDir;
         }
     }
 }
 
-// ディレクトリが書き込み可能か確認
-if (!is_writable($sessionDir)) {
-    @chmod($sessionDir, 0755); // 0777から0755に変更（セキュリティ向上）
+// セッションディレクトリは所有者のみアクセス可能に
+if (!is_dir($sessionDir)) {
+    if (!@mkdir($sessionDir, 0700, true)) {
+        // フォールバック先も0700で作成
+        $sessionDir = sys_get_temp_dir() . '/my_app_sessions_' . md5(__DIR__);
+        if (!is_dir($sessionDir)) {
+            @mkdir($sessionDir, 0700, true);
+        }
+    }
+}
+
+// パーミッション確認と修正
+if (is_dir($sessionDir)) {
+    $perms = fileperms($sessionDir) & 0777;
+    if ($perms !== 0700) {
+        @chmod($sessionDir, 0700);
+    }
 }
 
 // セッション保存先を設定
@@ -181,5 +203,4 @@ if (defined('DEBUG_MODE') && DEBUG_MODE === true) {
 // ★重要: config.phpではセッションを開始しない
 // セッションは各エンドポイント（get-csrf-token.php, contact-handler.php）で
 // 必要に応じて開始する
-
 ?>
